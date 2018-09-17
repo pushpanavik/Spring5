@@ -1,0 +1,21 @@
+package com.example.spring.dao;
+
+import org.reactivestreams.Publisher;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.spring.model.User;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@Repository
+public interface UserRepository extends MongoRepository<User, String>{
+
+	Publisher<Void> saveUser(Mono<User> user);
+
+	Flux<User> findAllUser();
+
+	Mono<User> findUserById(String userId);
+	
+}

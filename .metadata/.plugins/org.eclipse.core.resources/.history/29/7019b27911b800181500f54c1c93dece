@@ -1,0 +1,15 @@
+package com.example.spring.model;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class User {
+
+	
+	private String userId;
+	private String username;
+	private int phoneNumber;
+	private String email;
+	private String password;
+	
+}

@@ -1,0 +1,42 @@
+package com.example.spring.service;
+
+import java.net.URI;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.spring.dao.UserRepository;
+import com.example.spring.model.User;
+import com.example.spring.utility.Util;
+
+import reactor.core.publisher.Mono;
+
+@Service
+public class UserServiceImpl implements UserService {
+	
+//	@Autowired
+//	private Util util;
+//	
+	@Autowired
+	private UserRepository userRepository;
+//	
+//	
+	@Override
+	public Mono<User> addUser(Mono<User> bodyToMono, URI uri) {
+		
+		return bodyToMono.flatMap(user ->{
+			
+			//util.validateUserData(user);
+			boolean b= userRepository.IsEmailIdExist(user.getEmail());
+			System.out.println(b);
+			User userobj=new User(user.getUsername(), user.getPhoneNumber(), user.getEmail(), user.getPassword(), false);
+				
+			return userRepository.save(userobj);
+			
+		}) ;
+//	}
+
+
+
+	
+}

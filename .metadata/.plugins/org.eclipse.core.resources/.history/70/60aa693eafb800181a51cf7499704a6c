@@ -1,0 +1,12 @@
+package com.example.spring.dao;
+
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+
+import com.example.spring.model.User;
+
+import reactor.core.publisher.Mono;
+
+public interface UserRepository extends ReactiveMongoRepository<User, String>{
+
+	Mono<? extends User> IsEmailIdExist(String email);
+}

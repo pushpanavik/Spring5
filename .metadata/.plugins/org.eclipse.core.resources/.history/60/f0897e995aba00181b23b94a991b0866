@@ -1,0 +1,23 @@
+package com.example.spring.dao;
+
+import org.reactivestreams.Publisher;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import com.example.spring.model.User;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+public interface UserRepository extends MongoRepository<User, String>{
+
+	@Override
+    default void customize(QuerydslBindings bindings, QCustomer root) {
+
+        bindings.bind(String.class).first((SingleValueBinding<StringPath, String>) StringExpression::containsIgnoreCase);
+    }
+	Publisher<Void> saveUser(Mono<User> user);
+
+	Flux<User> getAllUser();
+
+	Mono<User> getUserById(String userId);
+	
+}

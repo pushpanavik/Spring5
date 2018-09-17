@@ -1,0 +1,22 @@
+package com.example.spring.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.example.spring.service.UserService;
+
+import reactor.core.publisher.Mono;
+
+public class UserHandler {
+	
+	@Autowired
+	private UserService userService; 
+
+	public Mono<ServerResponse> hello(ServerRequest req){
+		return  ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
+				.body(BodyInserters.fromObject("Hello World" ));
+	}
+}

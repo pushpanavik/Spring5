@@ -1,0 +1,10 @@
+package com.example.spring.dao;
+
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+
+import com.example.spring.model.User;
+
+public interface UserInfoRepository extends ReactiveCrudRepository<User, String> {
+	
+	
+}

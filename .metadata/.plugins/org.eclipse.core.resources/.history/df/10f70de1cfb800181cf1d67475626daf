@@ -1,0 +1,36 @@
+package com.example.spring.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.example.spring.model.User;
+import com.example.spring.service.UserService;
+
+import reactor.core.publisher.Mono;
+
+@Component
+public class UserHandler {
+	
+	@Autowired
+	private UserService userService; 
+	
+
+	public Mono<ServerResponse> hello(ServerRequest req){
+		return  ServerResponse.ok().contentType(MediaType.TEXT_PLAIN)
+				.body(BodyInserters.fromObject("Hello World" ));
+	}
+	
+	public Mono<ServerResponse> registerUser(ServerRequest req){
+		Mono<User> mono=userService.addUser(req.bodyToMono(User.class),req.uri());
+		
+		return ServerResponse.created(UriComponentsBuilder
+				.fromPath("/register").build().toUri())
+				.contentType(MediaType.TEXT_EVENT_STREAM)
+				.body(mono,User.class);
+	}
+}

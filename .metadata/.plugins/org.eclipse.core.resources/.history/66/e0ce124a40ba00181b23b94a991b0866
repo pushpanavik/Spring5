@@ -1,0 +1,12 @@
+package com.example.spring.dao;
+
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+
+import com.example.spring.model.User;
+
+import reactor.core.publisher.Mono;
+
+public interface UserInfoRepository extends ReactiveCrudRepository<User, String> {
+	
+	Mono<User> findById(String id);
+}

@@ -1,0 +1,17 @@
+package com.example.spring.configuration;
+
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.server.RequestPredicates;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import com.example.spring.controller.UserHandler;
+
+public class RouterConfiguration {
+
+	public RouterFunction<ServerResponse> route(UserHandler userHandler){
+		return RouterFunctions.route(GET("/hello").and(accept(MediaType.TEXT_PLAIN)), userHandler::get);
+		
+	}
+}

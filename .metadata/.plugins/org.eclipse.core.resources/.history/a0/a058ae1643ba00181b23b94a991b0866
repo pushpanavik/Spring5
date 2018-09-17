@@ -1,0 +1,15 @@
+package com.example.spring;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
+
+@EnableReactiveMongoRepositories
+@SpringBootApplication
+public class FundooWithSpring5Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(FundooWithSpring5Application.class, args);
+	}
+}
