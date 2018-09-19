@@ -1,0 +1,24 @@
+package com.example;
+
+import java.io.File;
+import java.io.IOException;
+
+public class Java8Example {
+	
+public static void main(String[] args) {
+	File f=new File("f2.txt");
+	try {
+		boolean b=f.createNewFile();
+		boolean deletefile=f.delete();
+		System.out.println(deletefile);
+		String path=f.getAbsolutePath();
+		System.out.println(path);
+	} catch (IOException e) {
+		
+		e.printStackTrace();
+	}
+	
+	
+	
+}
+}

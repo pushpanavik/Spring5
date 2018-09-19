@@ -33,16 +33,16 @@ public class Util {
 	
 	private static final Pattern emailValidation = Pattern.compile("[a-z0-9+_.-]+@{1}[a-z](.+){1}[a-z]",Pattern.CASE_INSENSITIVE);
 	
-	public static String generateToken(String username,String emailId,int id)
+	public static String generateToken(String id)
 	{
 		long currentTime=System.currentTimeMillis();
 		Date currentDate=new Date(currentTime);
 		Date expireDate=new Date(currentTime+ 24*60*60*1000);
 		
 		String getToken=Jwts.builder()
-				.setId(Integer.toString(id))
-				.setIssuer(username)
-				.setSubject(emailId)
+				.setId((id))
+//				.setIssuer(username)
+//				.setSubject(emailId)
 				.setIssuedAt(currentDate)
 				.setExpiration(expireDate)
 				.signWith(SignatureAlgorithm.HS256,KEY)
@@ -52,12 +52,12 @@ public class Util {
 	}
 	
 
-	public static int getId(String token)
+	public static String getId(String token)
 	 {
-		 int id=0;
+		 String id=null;
 		 System.out.println("token is:" +token);
 		 Claims claim = Jwts.parser().setSigningKey(KEY).parseClaimsJws(token).getBody();
-		 id=Integer.parseInt(claim.getId());
+		 id=claim.getId();
 		 return id;
 	 }
 
@@ -126,7 +126,7 @@ public class Util {
 				else if(user.getEmail()==null || !(isEmailValid(user.getEmail()))){
 					return "not a valid email address";
 				}
-					else if(Integer.toString(user.getPhoneNumber()).length()!=10) {
+					else if(Integer.toString((int) user.getPhoneNumber()).length()!=10) {
 						return "enter 10 digit phone number";
 					}	
 					else if((user.getPhoneNumber())!=10) {

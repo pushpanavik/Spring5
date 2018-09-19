@@ -1,0 +1,52 @@
+package com.example;
+
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import com.example.spring.model.User;
+
+public class Java8Example {
+	private  void process(User u) {
+		String status=u.getUserId();
+	
+		switch(status) {
+		String status = t.getStatus();
+
+
+
+        switch(status) {
+
+        caseNEW:
+
+              newTrade(t);
+
+              break;
+
+        caseEXECUTE:
+
+              executeTrade(t);
+
+              break;
+
+        casePENDING:
+
+              pendingTrade(t);
+
+              break;
+
+
+
+        default:
+
+              break;
+
+        }
+		}
+	}
+public static void main(String[] args) {
+	Map<String, List<User>> list=new TreeMap<>();
+	
+	
+}
+}
