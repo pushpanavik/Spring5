@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: bridgeit
+Build-Jdk: 11.0.1
+Implementation-Title: Spring5Login
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.example
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/Spring5Login
+Created-By: Maven Integration for Eclipse
+
